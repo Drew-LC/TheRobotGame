@@ -14,3 +14,13 @@ config/name="Final_COMP353"
 run/main_scene="uid://c0yl4j7a0xd25"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="Final_COMP353"

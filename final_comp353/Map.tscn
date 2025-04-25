@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://c0yl4j7a0xd25"]
+[gd_scene load_steps=2 format=3 uid="uid://c0yl4j7a0xd25"]
+
+[ext_resource type="Script" uid="uid://dluvbb2hk1sym" path="res://Map.cs" id="1_gfjgm"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_gfjgm")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 100
+text = "ALISTER"
+horizontal_alignment = 1
+vertical_alignment = 1
