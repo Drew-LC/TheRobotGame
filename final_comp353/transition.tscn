@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://ic6tc6vklirh"]
+
+[sub_resource type="GDScript" id="GDScript_1yi3g"]
+script/source = "extends CanvasLayer
+
+signal on_transition_finished
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$BG.visible = false
+	$Animate.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished(anim_name):
+	if anim_name == \"FadeIn\":
+		on_transition_finished.emit()
+		$Animate.play(\"FadeOut\")
+	elif anim_name == \"FadeOut\":
+		$BG.visible = false
+
+func transition():
+	$BG.visible = true
+	$Animate.play(\"FadeIn\")
+"
+
+[sub_resource type="Animation" id="Animation_2ji7y"]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_187jn"]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ldyg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gsyeg"]
+_data = {
+&"FadeIn": SubResource("Animation_2ji7y"),
+&"FadeOut": SubResource("Animation_187jn"),
+&"RESET": SubResource("Animation_ldyg2")
+}
+
+[node name="Transition" type="CanvasLayer"]
+script = SubResource("GDScript_1yi3g")
+
+[node name="BG" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gsyeg")
+}

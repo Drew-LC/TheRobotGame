@@ -1,0 +1,235 @@
+[gd_scene load_steps=22 format=3 uid="uid://bw7dnl0hsy4w3"]
+
+[ext_resource type="Shader" uid="uid://bmb2tcr0ur8pk" path="res://scroll.gdshader" id="1_5yleq"]
+[ext_resource type="Script" uid="uid://duc7beejjvk1t" path="res://menu.gd" id="1_h06ok"]
+[ext_resource type="Texture2D" uid="uid://biybfuwtd5d5v" path="res://GFX/Menu/Stars.png" id="2_elwp8"]
+[ext_resource type="Shader" uid="uid://dkuxdhh04mpx6" path="res://glitch.gdshader" id="3_cx167"]
+[ext_resource type="FontFile" uid="uid://cd8ioofmybjqo" path="res://Fonts/CascadiaMono-Bold.otf" id="3_ylpcl"]
+[ext_resource type="Texture2D" uid="uid://bb5qnte6hb41x" path="res://GFX/Menu/ButtonBeginnerNormal.png" id="5_dlksc"]
+[ext_resource type="Texture2D" uid="uid://cil70fn671rs3" path="res://GFX/Menu/ButtonBeginnerPressed.png" id="6_hcwhg"]
+[ext_resource type="Texture2D" uid="uid://dwfyq20tnu1g1" path="res://GFX/Menu/ButtonBeginnerHover.png" id="7_5p1lm"]
+[ext_resource type="Texture2D" uid="uid://d0iy1ne4ybxf1" path="res://GFX/Menu/ButtonInterNormal.png" id="8_elwp8"]
+[ext_resource type="Texture2D" uid="uid://c5071ro2i62rs" path="res://GFX/Menu/ButtonInterPressed.png" id="9_h06ok"]
+[ext_resource type="FontFile" uid="uid://boowoxys6hswi" path="res://Fonts/Ramona-Light.ttf" id="9_n8j1b"]
+[ext_resource type="Texture2D" uid="uid://hqxc2ojuj5hj" path="res://GFX/Menu/ButtonInterHover.png" id="10_n8j1b"]
+[ext_resource type="Texture2D" uid="uid://cmct4p2ba46gq" path="res://GFX/Menu/ButtonSkilledNormal.png" id="11_2qy1q"]
+[ext_resource type="Texture2D" uid="uid://buu6xus4nivxh" path="res://GFX/Menu/ButtonSkilledPressed.png" id="12_lwhxt"]
+[ext_resource type="Texture2D" uid="uid://2yl4a3etna4g" path="res://GFX/Menu/ButtonSkilledHover.png" id="13_0duj0"]
+[ext_resource type="Texture2D" uid="uid://bvyo4s21q73hf" path="res://GFX/Menu/ButtonExpertNormal.png" id="14_75jwl"]
+[ext_resource type="Texture2D" uid="uid://chj8tmj63awkv" path="res://GFX/Menu/ButtonExpertPressed.png" id="15_5opjp"]
+[ext_resource type="Texture2D" uid="uid://dwd3q4gmwm2vu" path="res://GFX/Menu/ButtonExpertHover.png" id="16_i28r4"]
+[ext_resource type="FontFile" uid="uid://dqpw83t7vsg6d" path="res://Fonts/Ramona-Bold.ttf" id="19_2qy1q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx167"]
+shader = ExtResource("1_5yleq")
+shader_parameter/speed = 0.025
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dolsu"]
+shader = ExtResource("3_cx167")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_h06ok")
+
+[node name="BGColor" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.863365, 0.564926, 0.713279, 1)
+
+[node name="BGStars" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_cx167")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_elwp8")
+stretch_mode = 1
+
+[node name="Title" type="Label" parent="."]
+offset_right = 1277.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.0496383, 0.250341, 0.420267, 1)
+theme_override_colors/font_shadow_color = Color(3.46541e-06, 0.612293, 0.868083, 1)
+theme_override_fonts/font = ExtResource("3_ylpcl")
+theme_override_font_sizes/font_size = 100
+text = "THE ROBOT GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shader" type="Label" parent="Title"]
+material = SubResource("ShaderMaterial_dolsu")
+layout_mode = 0
+offset_right = 1277.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.180392, 0.0156863, 0.686275, 1)
+theme_override_colors/font_shadow_color = Color(0.459214, 0.508855, 0.999032, 1)
+theme_override_fonts/font = ExtResource("3_ylpcl")
+theme_override_font_sizes/font_size = 100
+text = "THE ROBOT GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instructions" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 120.0
+offset_right = 1255.0
+offset_bottom = 246.0
+theme_override_colors/font_color = Color(0.142028, 0.438274, 0.978141, 1)
+theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
+theme_override_fonts/font = ExtResource("9_n8j1b")
+theme_override_font_sizes/font_size = 40
+text = "Plug in \"Glover Sock\" into this laptop and control it with WASD to move it and dismount it using SPACE/ENTER as close to the displayed goal as possible under 30 seconds."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Note" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 253.0
+offset_right = 1255.0
+offset_bottom = 306.0
+theme_override_colors/font_color = Color(0.805813, 0.184508, 0.557413, 1)
+theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
+theme_override_fonts/font = ExtResource("9_n8j1b")
+theme_override_font_sizes/font_size = 40
+text = "NOTE: Please re-upload the Arduino script before starting a game."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Beginner" type="TextureButton" parent="."]
+offset_left = 33.0
+offset_top = 316.0
+offset_right = 424.0
+offset_bottom = 414.0
+texture_normal = ExtResource("5_dlksc")
+texture_pressed = ExtResource("6_hcwhg")
+texture_hover = ExtResource("7_5p1lm")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Beginner"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 22.0
+offset_right = 1252.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.202532, 0.747977, 0.320392, 1)
+theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
+theme_override_fonts/font = ExtResource("9_n8j1b")
+theme_override_font_sizes/font_size = 40
+text = "Both the robot and the goal will stay visible."
+vertical_alignment = 1
+
+[node name="Intermediate" type="TextureButton" parent="."]
+offset_left = 33.0
+offset_top = 416.0
+offset_right = 424.0
+offset_bottom = 514.0
+texture_normal = ExtResource("8_elwp8")
+texture_pressed = ExtResource("9_h06ok")
+texture_hover = ExtResource("10_n8j1b")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Intermediate"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 25.0
+offset_right = 1252.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.999143, 0.881507, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
+theme_override_fonts/font = ExtResource("9_n8j1b")
+theme_override_font_sizes/font_size = 40
+text = "Only the robot will stay visible."
+vertical_alignment = 1
+
+[node name="Skilled" type="TextureButton" parent="."]
+offset_left = 33.0
+offset_top = 516.0
+offset_right = 424.0
+offset_bottom = 614.0
+texture_normal = ExtResource("11_2qy1q")
+texture_pressed = ExtResource("12_lwhxt")
+texture_hover = ExtResource("13_0duj0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Skilled"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 20.0
+offset_right = 1252.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 0.241805, 0.456482, 1)
+theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
+theme_override_fonts/font = ExtResource("9_n8j1b")
+theme_override_font_sizes/font_size = 40
+text = "Only the goal will stay visible."
+vertical_alignment = 1
+
+[node name="Expert" type="TextureButton" parent="."]
+offset_left = 33.0
+offset_top = 616.0
+offset_right = 424.0
+offset_bottom = 714.0
+texture_normal = ExtResource("14_75jwl")
+texture_pressed = ExtResource("15_5opjp")
+texture_hover = ExtResource("16_i28r4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Expert"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 23.0
+offset_right = 1252.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.750353, 0.393484, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
+theme_override_fonts/font = ExtResource("9_n8j1b")
+theme_override_font_sizes/font_size = 40
+text = "Neither the robot nor the goal will stay visible."
+vertical_alignment = 1
+
+[node name="StartScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Start" type="Control" parent="StartScreen"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartColor" type="ColorRect" parent="StartScreen/Start"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.39414, 0.650631, 0.642416, 1)
+
+[node name="StartLabel" type="Label" parent="StartScreen/Start"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_colors/font_color = Color(0, 0.317635, 0.27992, 1)
+theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
+theme_override_fonts/font = ExtResource("19_2qy1q")
+theme_override_font_sizes/font_size = 300
+text = "Ready?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="Beginner" to="." method="_on_beginner_mouse_entered"]
+[connection signal="pressed" from="Beginner" to="." method="_on_beginner_pressed"]
+[connection signal="mouse_entered" from="Intermediate" to="." method="_on_intermediate_mouse_entered"]
+[connection signal="pressed" from="Intermediate" to="." method="_on_intermediate_pressed"]
+[connection signal="mouse_entered" from="Skilled" to="." method="_on_skilled_mouse_entered"]
+[connection signal="pressed" from="Skilled" to="." method="_on_skilled_pressed"]
+[connection signal="mouse_entered" from="Expert" to="." method="_on_expert_mouse_entered"]
+[connection signal="pressed" from="Expert" to="." method="_on_expert_pressed"]

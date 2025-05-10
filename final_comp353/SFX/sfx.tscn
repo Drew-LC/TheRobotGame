@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo5elw5fkl23t"]
+
+[ext_resource type="Script" uid="uid://ks3cwwh0nmp6" path="res://SFX/sfx.gd" id="1_j0nbq"]
+[ext_resource type="AudioStream" uid="uid://d2cvupcm7gq2g" path="res://SFX/gameplay/round_countdown.wav" id="2_8ow8l"]
+[ext_resource type="AudioStream" uid="uid://dgyjasi3ly4ml" path="res://SFX/gameplay/round_results.mp3" id="3_tympw"]
+[ext_resource type="AudioStream" uid="uid://xf5agg8fg3u1" path="res://SFX/gameplay/round_start.wav" id="4_tsckm"]
+[ext_resource type="AudioStream" uid="uid://jdfkd1iehhck" path="res://SFX/gameplay/round_timeup.wav" id="5_exh8s"]
+[ext_resource type="AudioStream" uid="uid://d18mkbgbf84np" path="res://SFX/ui/buttonclick.mp3" id="6_30r2e"]
+[ext_resource type="AudioStream" uid="uid://x04erwl8kfn5" path="res://SFX/ui/buttonhover.wav" id="7_0lld4"]
+[ext_resource type="AudioStream" uid="uid://cwehfgem64hsm" path="res://SFX/gameplay/round_grade.wav" id="8_8ow8l"]
+
+[node name="SFX" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j0nbq")
+
+[node name="RoundCountdown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8ow8l")
+
+[node name="RoundResult" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tympw")
+
+[node name="RoundStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tsckm")
+
+[node name="RoundTimeout" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_exh8s")
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_30r2e")
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0lld4")
+
+[node name="Grade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8ow8l")
