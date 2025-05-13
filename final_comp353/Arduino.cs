@@ -23,25 +23,9 @@ public partial class Arduino : Node2D //Main body
 	{
 		if(!serialPort.IsOpen) return; //If serial port is not open, do nothing.
 		
-		//var GlobalStats = GD.Load<GDScript>("res://GlobalStats.gd");
-		//var GlobalStatsNode = (GodotObject)GlobalStats.New();
-		//ismoving = GlobalStatsNode.Get("moving").As<bool>();
-		
 		//Control the robot's movement.
 		if(wheeled){
-			if(Input.IsActionPressed("left") && Input.IsActionPressed("up")){
-				serialPort.Write("7"); //7 represents move left forward in a curve.
-				text.Text = "upleft";
-			}else if(Input.IsActionPressed("right") && Input.IsActionPressed("up")){
-				serialPort.Write("8"); //8 represents move right forward in a curve.
-				text.Text = "upleft";
-			}else if(Input.IsActionPressed("left") && Input.IsActionPressed("down")){
-				serialPort.Write("9"); //9 represents move left backwards in a curve.
-				text.Text = "upleft";
-			}else if(Input.IsActionPressed("right") && Input.IsActionPressed("down")){
-				serialPort.Write("0"); //0 represents move right backwards in a curve.
-				text.Text = "upleft";
-			}else if(Input.IsActionPressed("up")){
+			if(Input.IsActionPressed("up")){
 				serialPort.Write("1"); //1 represents move up.
 				text.Text = "up";
 			}else if(Input.IsActionPressed("left")){
@@ -53,7 +37,7 @@ public partial class Arduino : Node2D //Main body
 			}else if(Input.IsActionPressed("down")){
 				serialPort.Write("4"); //4 represent move down straight.
 				text.Text = "down";
-			}else if(Input.IsActionPressed("ui_accept")){
+			}else if(Input.IsActionPressed("space")){
 				serialPort.Write("5"); //5 represents dismount.
 				text.Text = "dismount";
 				wheeled = false;
@@ -61,11 +45,15 @@ public partial class Arduino : Node2D //Main body
 				text.Text = "...";
 			}
 		}else{
-			if(Input.IsActionPressed("ui_accept")){
+			if(Input.IsActionPressed("enter")){
 				serialPort.Write("6"); //6 represents mount.
 				text.Text = "mount";
 				wheeled = true;
 			}
 		}
 	}
+	
+	//var GlobalStats = GD.Load<GDScript>("res://GlobalStats.gd");
+		//var GlobalStatsNode = (GodotObject)GlobalStats.New();
+		//ismoving = GlobalStatsNode.Get("moving").As<bool>();
 }

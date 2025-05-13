@@ -1,20 +1,44 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0yl4j7a0xd25"]
+[gd_scene load_steps=23 format=3 uid="uid://c0yl4j7a0xd25"]
 
 [ext_resource type="Script" uid="uid://j8wc5xyxrcci" path="res://Arduino.cs" id="1_gfjgm"]
 [ext_resource type="Texture2D" uid="uid://caclw7wcpvda8" path="res://GFX/Map/Goal.png" id="2_3h1ab"]
 [ext_resource type="Texture2D" uid="uid://friu2h6jjq6h" path="res://GFX/Map/Robot.png" id="2_7if1s"]
 [ext_resource type="Script" uid="uid://dyd8v7k31ny8n" path="res://map.gd" id="2_v6avs"]
+[ext_resource type="Shader" uid="uid://dn03pg4mlxw68" path="res://water.gdshader" id="3_saq0m"]
 [ext_resource type="Texture2D" uid="uid://cpbr8lo8ws04e" path="res://GFX/Map/DismountBarUnder.png" id="4_b3mxb"]
 [ext_resource type="Texture2D" uid="uid://cc57qbull1svs" path="res://GFX/Map/DismountBarProgress.png" id="5_saq0m"]
 [ext_resource type="Texture2D" uid="uid://lr3eb5pnbijc" path="res://GFX/Map/TimeUp.png" id="5_ud676"]
 [ext_resource type="FontFile" uid="uid://dqpw83t7vsg6d" path="res://Fonts/Ramona-Bold.ttf" id="5_v6avs"]
 [ext_resource type="FontFile" uid="uid://cd8ioofmybjqo" path="res://Fonts/CascadiaMono-Bold.otf" id="6_vm4q1"]
 [ext_resource type="Shader" uid="uid://dkuxdhh04mpx6" path="res://glitch.gdshader" id="9_dbu0r"]
-[ext_resource type="Texture2D" uid="uid://cqi8me6va6c68" path="res://GFX/Map/ButtonMenuNormal.png" id="12_b3mxb"]
-[ext_resource type="Texture2D" uid="uid://dbjhywptyt0h8" path="res://GFX/Map/ButtonMenuPressed.png" id="13_s2a0k"]
 [ext_resource type="FontFile" uid="uid://blyeiy3ofm7pb" path="res://Fonts/Montserrat-Bold.ttf" id="13_saq0m"]
-[ext_resource type="Texture2D" uid="uid://cahxrxk516w04" path="res://GFX/Map/ButtonMenuHover.png" id="14_iye0r"]
+[ext_resource type="Texture2D" uid="uid://2a84ggidkagp" path="res://GFX/Map/ButtonQuitNormal.png" id="14_saq0m"]
+[ext_resource type="Texture2D" uid="uid://co2f8y6x6uafv" path="res://GFX/Map/ButtonQuitPress.png" id="15_s2a0k"]
+[ext_resource type="Texture2D" uid="uid://2n3ya3pm0i3n" path="res://GFX/Map/ButtonQuitHover.png" id="16_iye0r"]
 [ext_resource type="FontFile" uid="uid://boowoxys6hswi" path="res://Fonts/Ramona-Light.ttf" id="17_s2a0k"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_saq0m"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s2a0k"]
+seamless = true
+noise = SubResource("FastNoiseLite_saq0m")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iye0r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lf0el"]
+seamless = true
+noise = SubResource("FastNoiseLite_iye0r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lf0el"]
+shader = ExtResource("3_saq0m")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_s2a0k")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_lf0el")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(0.05, 0.05)
+shader_parameter/distortion_strength = 0.015
+shader_parameter/tone_color = Color(0.356863, 0.584314, 0.992157, 1)
+shader_parameter/light_start = 0.484
+shader_parameter/light_end = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_saq0m"]
 shader = ExtResource("9_dbu0r")
@@ -35,6 +59,15 @@ offset_bottom = 40.0
 script = ExtResource("2_v6avs")
 
 [node name="BGColor" type="ColorRect" parent="Scene"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -23.0
+offset_right = 1327.0
+offset_bottom = 750.0
+color = Color(0.35852, 0.585649, 0.99379, 1)
+
+[node name="Shader" type="ColorRect" parent="Scene"]
+material = SubResource("ShaderMaterial_lf0el")
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -176,9 +209,9 @@ autowrap_mode = 3
 [node name="Comment" type="Label" parent="Scene/EndScreen/EndLabel2"]
 layout_mode = 0
 offset_left = -271.0
-offset_top = 139.0
+offset_top = 143.0
 offset_right = 1009.0
-offset_bottom = 239.0
+offset_bottom = 243.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
 theme_override_fonts/font = ExtResource("13_saq0m")
@@ -188,32 +221,35 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="MenuButton" type="TextureButton" parent="Scene/EndScreen"]
+[node name="Note" type="Label" parent="Scene/EndScreen"]
 modulate = Color(1, 1, 1, 0)
-offset_left = 135.0
-offset_top = 601.0
-offset_right = 526.0
-offset_bottom = 699.0
-texture_normal = ExtResource("12_b3mxb")
-texture_pressed = ExtResource("13_s2a0k")
-texture_hover = ExtResource("14_iye0r")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Note" type="Label" parent="Scene/EndScreen/MenuButton"]
-layout_mode = 0
-offset_left = 414.0
-offset_right = 1043.0
-offset_bottom = 98.0
+offset_left = 262.0
+offset_top = 580.0
+offset_right = 1022.0
+offset_bottom = 678.0
 theme_override_colors/font_color = Color(0.805813, 0.184508, 0.557413, 1)
 theme_override_colors/font_shadow_color = Color(0.29219, 0.29219, 0.29219, 1)
 theme_override_fonts/font = ExtResource("17_s2a0k")
 theme_override_font_sizes/font_size = 40
-text = "Press SPACE/ENTER to remount the robot."
+text = "Press ENTER to remount the robot."
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="QuitButton" type="TextureButton" parent="Scene/EndScreen"]
+visible = false
+offset_left = 443.0
+offset_top = 592.0
+offset_right = 834.0
+offset_bottom = 690.0
+texture_normal = ExtResource("14_saq0m")
+texture_pressed = ExtResource("15_s2a0k")
+texture_hover = ExtResource("16_iye0r")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="DEBUG" type="RichTextLabel" parent="."]
+visible = false
 offset_left = 373.0
 offset_top = 218.0
 offset_right = 755.0
@@ -224,5 +260,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="visibility_changed" from="Scene/EndScreen" to="Scene" method="_on_end_screen_visibility_changed"]
-[connection signal="mouse_entered" from="Scene/EndScreen/MenuButton" to="Scene" method="_on_menu_button_mouse_entered"]
-[connection signal="pressed" from="Scene/EndScreen/MenuButton" to="Scene" method="_on_menu_button_pressed"]
+[connection signal="mouse_entered" from="Scene/EndScreen/QuitButton" to="Scene" method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="Scene/EndScreen/QuitButton" to="Scene" method="_on_quit_button_pressed"]

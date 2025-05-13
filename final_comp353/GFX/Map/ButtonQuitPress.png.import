@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cahxrxk516w04"
-path="res://.godot/imported/ButtonMenuHover.png-cfc2cdd2fafeb113ffd1e65d0b9efcdd.ctex"
+uid="uid://co2f8y6x6uafv"
+path="res://.godot/imported/ButtonQuitPress.png-f986eec4ff32d0a6de88043b4b3d6d4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/Map/ButtonMenuHover.png"
-dest_files=["res://.godot/imported/ButtonMenuHover.png-cfc2cdd2fafeb113ffd1e65d0b9efcdd.ctex"]
+source_file="res://GFX/Map/ButtonQuitPress.png"
+dest_files=["res://.godot/imported/ButtonQuitPress.png-f986eec4ff32d0a6de88043b4b3d6d4c.ctex"]
 
 [params]
 
